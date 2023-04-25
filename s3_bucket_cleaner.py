@@ -1,12 +1,14 @@
 """
 s3_bucket_cleaner.py
 Author: Mark @ https://github.com/acceptableEngineering/s3-deployment-cleaner
-Usage:
-    python3 s3_bucket_cleaner.py
-        bucket (Required)
-        [Keep days: int. Default: 30. Optional]
-        [Perform deletions: True. Default: False. Optional]
-        [Keep dirs: int. Default 0. Optional]
+
+Please see the README's Usage section to understand what each runtime option does. Quick start, EG:
+
+python3 s3_bucket_cleaner.py \
+    bucket= (required) \
+    keep_days= (optional) \
+    keep_dirs= (optional) \
+    dryrun= (optional)
 """
 import datetime
 import logging
@@ -38,8 +40,7 @@ def process_cli_options():
 
     # Process user parameters
     if len(sys.argv) < 2:
-        logging.error('Please see README! Usage: %s bucket [keep_days_int] '\
-                      '[perform_deletions_bool] [keep_dirs_int]', sys.argv[0])
+        logging.error('Please see Usage section of README. Exiting 1')
         sys.exit(1)
 
     runtime_option_count = 0
