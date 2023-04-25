@@ -65,17 +65,30 @@ def process_cli_options():
 
 def enum_s3_objects(conf_dict):
     """
-    Asks boto3 to enumerate all objects in our target S3 bucket, then compiles a list of objects
-    with a trailing slash. Since there is no concept of directories in S3, that's how we do it
+    Since there is no concept of directories in S3, we have boto3 enumerate all objects in the
+    target S3 bucket, and process only objects with trailing slashes
     """
     list_of_s3_dirs = []
+    list_added = []
     boto3_s3 = boto3.client('s3')
 
     for s3_object in boto3_s3.list_objects_v2(
         Bucket=conf_dict['bucket']
     )['Contents']:
         if '/' in s3_object['Key']:
-            list_of_s3_dirs.append(s3_object)
+            if s3_object['Key'][-1] == '/': # EG: 'files/'
+                this_name = s3_object['Key']
+            else: # EG: 'files/0.mp3' becomes just 'files/'
+                this_name = s3_object['Key'].split('/')[0] + '/'
+
+            # Scrappy but readable and performant way to maintain a deduplicated list
+            if this_name not in list_added:
+                list_added.append(this_name)
+
+                list_of_s3_dirs.append({
+                    'Key': this_name,
+                    'LastModified': s3_object['LastModified']
+                })
 
     return list_of_s3_dirs
 

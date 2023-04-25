@@ -25,16 +25,33 @@ pip install -r requirements.txt
 ## Quick Start
 Example run that will output a plan without performing deletions:
 ```
-python3 s3_bucket_cleaner.py bucket=acceptable-engineering-demo-archive
+python3 s3_bucket_cleaner.py \
+    bucket=acceptable-engineering-deployments
+```
+Output:
+```
+INFO:root:PURGE: deployment_1/ (~803 days old)
+INFO:root:PURGE: deployment_2/ (~114 days old)
+INFO:root:PURGE: deployment_3/ (~106 days old)
+INFO:root:PURGE: deployment_4/ (~90 days old)
+INFO:root:KEEP : deployment_5/ (~5 days old)
 ```
 
 Example run that will delete S3 "directories" older than 90 days, but keep the 3 most recent:
 ```
 python3 s3_bucket_cleaner.py \
-    bucket=acceptable-engineering-demo-archive \
+    bucket=acceptable-engineering-deployments \
     keep_days=90 \
     keep_dirs=3 \
     dryrun=False
+```
+Output:
+```
+INFO:root:PURGE: deployment_1/ (~803 days old)
+INFO:root:PURGE: deployment_2/ (~114 days old)
+INFO:root:KEEP: deployment_3/ (~106 days old)
+INFO:root:KEEP: deployment_4/ (~90 days old)
+INFO:root:KEEP : deployment_5/ (~5 days old)
 ```
 
 ---
@@ -46,7 +63,7 @@ Required:
 Optional:
 - `keep_days=`: the number of days from now backward in time for which you'd like to retain objects
 - `keep_dirs=`: the number of most recent S3 "directories" to keep
-- `dryrun`: By default this script will not perform any destructive actions. You must specify `dryrun=False` for it to perform deletions
+- `dryrun=`: By default this script will not perform any destructive actions. You must specify `dryrun=False` for it to perform deletions
 
 ---
 
