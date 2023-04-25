@@ -23,3 +23,7 @@ jobs:
         python -m venv testenv
         source testenv/bin/activate
         pip install -r requirements.txt
+        pip install pylint
+    - name: Run Pylint
+      run: |
+        pylint s3_bucket_cleaner.py
