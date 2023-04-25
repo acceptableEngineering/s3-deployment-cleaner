@@ -25,7 +25,8 @@ pip install -r requirements.txt
 ## Quick Start
 Example run that will output a plan without performing deletions:
 ```
-python3 s3_bucket_cleaner.py bucket=acceptable-engineering-deployments
+python3 s3_bucket_cleaner.py \
+    bucket=acceptable-engineering-deployments
 ```
 Output:
 ```
