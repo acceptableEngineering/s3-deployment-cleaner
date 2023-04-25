@@ -26,4 +26,4 @@ jobs:
         pip install pylint
     - name: Run Pylint
       run: |
-        pylint s3_bucket_cleaner.py
+        python -m pylint s3_bucket_cleaner.py
