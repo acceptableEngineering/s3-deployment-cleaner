@@ -30,4 +30,4 @@ jobs:
         source testenv/bin/activate
     - name: Run Pylint
       run: |
-        python -m pylint s3_bucket_cleaner.py
+        python -m pylint --fail-under=10.00 s3_bucket_cleaner.py
