@@ -5,6 +5,8 @@ project's documentation.
 
 Author: Mark @ https://github.com/acceptableEngineering/s3-deployment-cleaner
 
+[![Test Status Badge](https://github.com/acceptableEngineering/s3-deployment-cleaner/actions/workflows/PR.yml/badge.svg)](https://github.com/acceptableEngineering/s3-deployment-cleaner/actions/workflows/PR.yml)
+
 ---
 
 ## Setup
