@@ -20,4 +20,5 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        uptime
+        python -m venv testenv
+        source testenv/bin/activate
