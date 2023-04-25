@@ -18,21 +18,32 @@ git clone git@github.com:acceptableEngineering/s3-deployment-cleaner.git
 pip install -r requirements.txt
 
 # 3: Run the script (see options below)
-python3 s3-bucket-cleaner.py my-s3-bucket-name number-of-days
+python3 s3_bucket_cleaner.py my-s3-bucket-name number-of-days
 ```
 ---
 
 ## Usage / Options
-Arguments:
-1. S3 Bucket Name (required): the name of your S3 bucket as it exists in the AWS global namespace
-2. Number of Days (required): the number of days from now backward in time for which you'd like to retain objects
-3. Process (optional): by default this script will not perform any destructive actions. You must specify the positive keyword `process` as the 3rd argument for that to happen
+Required:
+- `bucket=`: the name of your S3 bucket as it exists in the AWS global namespace
 
-Example run:
+Optional:
+- `keep_days=`: the number of days from now backward in time for which you'd like to retain objects
+- `dryrun`: By default this script will not perform any destructive actions. You must specify `dryrun=False` for it to perform deletions
+- `keep_dirs=`: the number of most recent S3 "directories" to keep
+
+Example run that will output a plan without performing deletions:
 ```
-python3 s3-bucket-cleaner.py acceptable-engineering-demo-archive 30 process
+python3 s3_bucket_cleaner.py bucket=acceptable-engineering-demo-archive
 ```
 
+Example run that will delete S3 "directories" older than 90 days, but keep the 3 most recent:
+```
+python3 s3_bucket_cleaner.py \
+    bucket=acceptable-engineering-demo-archive \
+    keep_days=90 \
+    keep_dirs=3 \
+    dryrun=False
+```
 
 ---
 
