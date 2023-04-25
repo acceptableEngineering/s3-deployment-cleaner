@@ -1,6 +1,6 @@
 # s3-deployment-cleaner
 
-![Project Icon](https://github.com/acceptableEngineering/s3-deployment-cleaner/blob/main/.github/README-images/icon.png?raw=true)
+<img align="left" width="160" src="https://github.com/acceptableEngineering/s3-deployment-cleaner/blob/main/.github/README-images/icon.png?raw=true">
 
 Removes old "directories" from a given S3 bucket based on date created. S3 has no concept of
 directories, only objects with slashes in them, so you'll find the word taken lightly in this
@@ -9,6 +9,8 @@ project's documentation.
 Author: Mark @ https://github.com/acceptableEngineering/s3-deployment-cleaner
 
 [![Test Status Badge](https://github.com/acceptableEngineering/s3-deployment-cleaner/actions/workflows/PR.yml/badge.svg)](https://github.com/acceptableEngineering/s3-deployment-cleaner/actions/workflows/PR.yml)
+
+&nbsp;<br />
 
 ---
 
